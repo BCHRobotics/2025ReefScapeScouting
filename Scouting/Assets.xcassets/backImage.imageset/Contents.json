@@ -1,0 +1,27 @@
+{
+  "images" : [
+    {
+      "filename" : "fd_frc_reefscape_socialgraphics_igstory.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "fd_frc_reefscape_socialgraphics_igstory 1.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "fd_frc_reefscape_socialgraphics_igstory 2.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "localizable" : true,
+    "template-rendering-intent" : "original"
+  }
+}
