@@ -43,11 +43,45 @@ struct QRCodeView: View {
             
             // Display summarized stats
             ScrollView {
-                Text(summaryText)  // Display the summarized stats as text
-                    .padding()
-                    .background(Color(.secondarySystemBackground))
-                    .cornerRadius(10)
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("Prematch Phase:").bold()
+                    Group {
+                        
+                        Text("Match Number:") + Text(" \(matchNumber.isEmpty ? "null" : matchNumber)")
+                        Text("Team Number:") + Text(" \(teamNumber.isEmpty ? "null" : teamNumber)")
+                        Text("Scouter Initials:") + Text(" \(scouterInitials.isEmpty ? "null" : scouterInitials)")
+                        Text("Alliance Position:") + Text(" \(selectedAlliancePosition.isEmpty ? "null" : selectedAlliancePosition)")
+                    }
+
+                    Text("Auto Phase:").bold()
+                    Group {
+                        Text("• Robot Left Starting Line:") + Text(" \(robotLeftStartingLine ? "Yes" : "No")")
+                        Text("• Auto Coral Scores:") + Text(" \(autoCoral1), \(autoCoral2), \(autoCoral3), \(autoCoral4)")
+                        Text("• Auto Processor Score:") + Text(" \(processorScoreAuto)")
+                    }
+
+                    Text("Teleop Phase:").bold()
+                    Group {
+                        Text("• Knocked Off Algae:") + Text(" \(knockedOffAlgae ? "Yes" : "No")")
+                        Text("• Teleop Coral Scores:") + Text(" \(teleopCoral1), \(teleopCoral2), \(teleopCoral3), \(teleopCoral4)")
+                        Text("• Teleop Processor Score:")  + Text(" \(processorScoreTeleop)")
+                    }
+
+                    Text("Endgame/Defensive Play:").bold()
+                    Group {
+                        Text("• Endgame Status:") + Text(" \(endgameStatus.isEmpty ? "null" : endgameStatus)")
+                        Text("• Stopped Opponents:") + Text(" \(stoppedOpponents.isEmpty ? "null" : stoppedOpponents)")
+                        Text("• Impeded Opponents:") + Text(" \(impededOpponents.isEmpty ? "null" : impededOpponents)")
+                        Text("• Didn't Stop Opponents:") + Text(" \(didntStopOpponents.isEmpty ? "null" : didntStopOpponents)")
+                    }
+
+                    Text("Comments:").bold() + Text(" \(comments.isEmpty ? "null" : comments)")
+                }
+                .padding()
+                .background(Color(.secondarySystemBackground))
+                .cornerRadius(10)
             }
+
             
             // Button to regenerate QR code
             Button("Generate QR Code") {
@@ -92,28 +126,31 @@ struct QRCodeView: View {
         }
     }
     
-    // Function to generate the QR code
     func generateQRCode() {
+        // Tab-delimited data for Excel compatibility
         let combinedData = """
-        Match: \(matchNumber), Team: \(teamNumber), Scouter: \(scouterInitials)
-        Alliance: \(selectedAlliancePosition)
-        
-        
-        Auto: \(robotLeftStartingLine ? "Left Line" : "Didn't Start") 
-        Auto Corals: \(autoCoral1), \(autoCoral2), \(autoCoral3), \(autoCoral4)
-        Auto Score: \(processorScoreAuto)
-        
-        Teleop: Algae: \(knockedOffAlgae ? "Yes" : "No")
-        Teleop Corals: \(teleopCoral1), \(teleopCoral2), \(teleopCoral3), \(teleopCoral4)
-        Teleop Score: \(processorScoreTeleop)
-        
-        Defence/Endgame: \(endgameStatus), Stopped: \(stoppedOpponents), Impeded: \(impededOpponents),
-        Didn't Stop: \(didntStopOpponents)
-        Comments: \(comments)
-        """
-        
-        // Save the summary to display it
-        summaryText = combinedData
+           \(matchNumber.isEmpty ? "null" : matchNumber)\t\
+           \(teamNumber.isEmpty ? "null" : teamNumber)\t\
+           \(scouterInitials.isEmpty ? "null" : scouterInitials)\t\
+           \(selectedAlliancePosition.isEmpty ? "null" : selectedAlliancePosition)\t\
+           \(robotLeftStartingLine ? "1" : "0")\t\
+           \(autoCoral1)\t\
+           \(autoCoral2)\t\
+           \(autoCoral3)\t\
+           \(autoCoral4)\t\
+           \(processorScoreAuto)\t\
+           \(knockedOffAlgae ? "1" : "0")\t\
+           \(teleopCoral1)\t\
+           \(teleopCoral2)\t\
+           \(teleopCoral3)\t\
+           \(teleopCoral4)\t\
+           \(processorScoreTeleop)\t\
+           \(endgameStatus.isEmpty ? "null" : endgameStatus)\t\
+           \(stoppedOpponents.isEmpty ? "null" : stoppedOpponents)\t\
+           \(impededOpponents.isEmpty ? "null" : impededOpponents)\t\
+           \(didntStopOpponents.isEmpty ? "null" : didntStopOpponents)\t\
+           \(comments.isEmpty ? "null" : comments)
+           """
         
         // Convert the data to generate QR Code
         if let data = combinedData.data(using: .utf8) {
@@ -122,9 +159,12 @@ struct QRCodeView: View {
             
             if let outputImage = filter.outputImage {
                 let context = CIContext()
-                if let cgImage = context.createCGImage(outputImage, from: outputImage.extent) {
-                    let uiImage = UIImage(cgImage: cgImage)
-                    qrCodeImage = uiImage
+                let scaleX = 500 / outputImage.extent.size.width
+                let scaleY = 500 / outputImage.extent.size.height
+                let transformedImage = outputImage.transformed(by: CGAffineTransform(scaleX: scaleX, y: scaleY))
+                
+                if let cgImage = context.createCGImage(transformedImage, from: transformedImage.extent) {
+                    qrCodeImage = UIImage(cgImage: cgImage)
                 }
             }
         }
