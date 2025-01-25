@@ -8,6 +8,7 @@ struct TeleopView: View {
     @Binding var coral3: Int
     @Binding var coral4: Int
     @Binding var processorScoreTeleop: Int
+    @Binding var netAlgaeTeleop : Int
 
     var body: some View {
         Form {
@@ -49,6 +50,13 @@ struct TeleopView: View {
                     Text("Processor Score")
                     Spacer()
                     Stepper("\(processorScoreTeleop)", value: $processorScoreTeleop, in: 0...10)
+                        .frame(maxWidth: 150)
+                }
+                // Processor score stepper (0-10)
+                HStack {
+                    Text("Net Algae Score")
+                    Spacer()
+                    Stepper("\(netAlgaeTeleop)", value: $netAlgaeTeleop, in: 0...10)
                         .frame(maxWidth: 150)
                 }
             }

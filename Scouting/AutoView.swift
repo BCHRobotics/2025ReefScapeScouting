@@ -8,6 +8,7 @@ struct AutoView: View {
     @Binding var coral3: Int
     @Binding var coral4: Int
     @Binding var processorScoreAuto: Int
+    @Binding var netAlgaeAuto: Int
 
     var body: some View {
         Form {
@@ -49,6 +50,13 @@ struct AutoView: View {
                     Text("Processor Score")
                     Spacer()
                     Stepper("\(processorScoreAuto)", value: $processorScoreAuto, in: 0...10)
+                        .frame(maxWidth: 150)
+                }
+                // Processor score stepper (0-10)
+                HStack {
+                    Text("Net Algae Score")
+                    Spacer()
+                    Stepper("\(netAlgaeAuto)", value: $netAlgaeAuto, in: 0...10)
                         .frame(maxWidth: 150)
                 }
             }

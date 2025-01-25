@@ -16,6 +16,7 @@ struct ContentView: View {
     @State private var autoCoral3: Int = 0
     @State private var autoCoral4: Int = 0
     @State private var processorScoreAuto: Int = 0
+    @State private var algaeNetAuto: Int = 0
     
     // Variables for Teleop
     @State private var knockedOffAlgae: Bool = false
@@ -24,6 +25,7 @@ struct ContentView: View {
     @State private var teleopCoral3: Int = 0
     @State private var teleopCoral4: Int = 0
     @State private var processorScoreTeleop: Int = 0
+    @State private var algaeNetTeleop: Int = 0
     
     // Variables for Defence
     @State private var endgameStatus: String = "Not Attempted"
@@ -70,7 +72,8 @@ struct ContentView: View {
                         coral2: $autoCoral2,
                         coral3: $autoCoral3,
                         coral4: $autoCoral4,
-                        processorScoreAuto: $processorScoreAuto
+                        processorScoreAuto: $processorScoreAuto,
+                        netAlgaeAuto: $algaeNetAuto
                     )
                     .tabItem {
                         Label("Auto", systemImage: "2.circle")
@@ -84,7 +87,7 @@ struct ContentView: View {
                         coral2: $teleopCoral2,
                         coral3: $teleopCoral3,
                         coral4: $teleopCoral4,
-                        processorScoreTeleop: $processorScoreTeleop
+                        processorScoreTeleop: $processorScoreTeleop, netAlgaeTeleop: $algaeNetTeleop
                     )
                     .tabItem {
                         Label("Teleop", systemImage: "3.circle" )
@@ -102,7 +105,6 @@ struct ContentView: View {
                         Label("Defence/Endgame", systemImage: "4.circle")
                     }
 
-                    // QR Code Tab
                     QRCodeView(
                         matchNumber: $matchNumber,
                         teamNumber: $teamNumber,
@@ -115,17 +117,20 @@ struct ContentView: View {
                         autoCoral3: $autoCoral3,
                         autoCoral4: $autoCoral4,
                         processorScoreAuto: $processorScoreAuto,
+                        algeaNetAuto: $algaeNetAuto, // Pass this variable
                         knockedOffAlgae: $knockedOffAlgae,
                         teleopCoral1: $teleopCoral1,
                         teleopCoral2: $teleopCoral2,
                         teleopCoral3: $teleopCoral3,
                         teleopCoral4: $teleopCoral4,
                         processorScoreTeleop: $processorScoreTeleop,
+                        algeaNetTeleop: $algaeNetTeleop, // Pass this variable
                         endgameStatus: $endgameStatus,
                         stoppedOpponents: $stoppedOpponents,
                         impededOpponents: $impededOpponents,
                         didntStopOpponents: $didntStopOpponents
                     )
+
                     .tabItem {
                         Label("QR Code", systemImage: "5.circle")
                     }

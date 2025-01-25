@@ -16,6 +16,7 @@ struct QRCodeView: View {
     @Binding var autoCoral3: Int
     @Binding var autoCoral4: Int
     @Binding var processorScoreAuto: Int
+    @Binding var algeaNetAuto: Int
     
     @Binding var knockedOffAlgae: Bool
     @Binding var teleopCoral1: Int
@@ -23,6 +24,7 @@ struct QRCodeView: View {
     @Binding var teleopCoral3: Int
     @Binding var teleopCoral4: Int
     @Binding var processorScoreTeleop: Int
+    @Binding var algeaNetTeleop: Int
     
     @Binding var endgameStatus: String
     @Binding var stoppedOpponents: String
@@ -58,6 +60,7 @@ struct QRCodeView: View {
                         Text("• Robot Left Starting Line:") + Text(" \(robotLeftStartingLine ? "Yes" : "No")")
                         Text("• Auto Coral Scores:") + Text(" \(autoCoral1), \(autoCoral2), \(autoCoral3), \(autoCoral4)")
                         Text("• Auto Processor Score:") + Text(" \(processorScoreAuto)")
+                        Text("• Net Algae Score:") + Text(" \(algeaNetAuto)")
                     }
 
                     Text("Teleop Phase:").bold()
@@ -65,6 +68,7 @@ struct QRCodeView: View {
                         Text("• Knocked Off Algae:") + Text(" \(knockedOffAlgae ? "Yes" : "No")")
                         Text("• Teleop Coral Scores:") + Text(" \(teleopCoral1), \(teleopCoral2), \(teleopCoral3), \(teleopCoral4)")
                         Text("• Teleop Processor Score:")  + Text(" \(processorScoreTeleop)")
+                        Text("• Teleop Net Algae Score:")  + Text(" \(algeaNetTeleop)")
                     }
 
                     Text("Endgame/Defensive Play:").bold()
@@ -139,12 +143,14 @@ struct QRCodeView: View {
            \(autoCoral3)\t\
            \(autoCoral4)\t\
            \(processorScoreAuto)\t\
+           \(algeaNetAuto)\t\
            \(knockedOffAlgae ? "1" : "0")\t\
            \(teleopCoral1)\t\
            \(teleopCoral2)\t\
            \(teleopCoral3)\t\
            \(teleopCoral4)\t\
            \(processorScoreTeleop)\t\
+           \(algeaNetTeleop)\t\
            \(endgameStatus.isEmpty ? "null" : endgameStatus)\t\
            \(stoppedOpponents.isEmpty ? "null" : stoppedOpponents)\t\
            \(impededOpponents.isEmpty ? "null" : impededOpponents)\t\
