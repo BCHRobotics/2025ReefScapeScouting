@@ -16,6 +16,7 @@ struct PrematchView: View {
                     TextField("Match Number", text: $matchNumber)
                         .keyboardType(.numberPad)
                     TextField("Team Number", text: $teamNumber)
+                        .keyboardType(.numberPad)
                     
                     Picker("Alliance Position", selection: $selectedAlliancePosition) {
                         ForEach(alliancePositions, id: \.self) { position in
