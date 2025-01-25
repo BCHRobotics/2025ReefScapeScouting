@@ -30,6 +30,8 @@ struct QRCodeView: View {
     @Binding var stoppedOpponents: String
     @Binding var impededOpponents: String
     @Binding var didntStopOpponents: String
+    @Binding var tippy: Bool
+    @Binding var disbled: Bool
     
     @State private var qrCodeImage: UIImage? = nil
     @State private var summaryText: String = ""
@@ -155,6 +157,8 @@ struct QRCodeView: View {
            \(stoppedOpponents.isEmpty ? "null" : stoppedOpponents)\t\
            \(impededOpponents.isEmpty ? "null" : impededOpponents)\t\
            \(didntStopOpponents.isEmpty ? "null" : didntStopOpponents)\t\
+           \(tippy ? "1" : "0")\t\
+           \(disbled ? "1" : "0")\t\           
            \(comments.isEmpty ? "null" : comments)
            """
         

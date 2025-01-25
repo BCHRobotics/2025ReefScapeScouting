@@ -8,6 +8,7 @@ struct ContentView: View {
     @State private var comments: String = ""
     @State private var selectedAlliancePosition: String = "Default"
     let alliancePositions = ["Default", "Red 1", "Red 2", "Red 3", "Blue 1", "Blue 2", "Blue 3"]
+    @State  private var matchStart: TimeInterval = 0
 
     // Variables for Auto
     @State private var robotLeftStartingLine: Bool = false
@@ -32,6 +33,8 @@ struct ContentView: View {
     @State private var stoppedOpponents: String = "No"
     @State private var impededOpponents: String = "No"
     @State private var didntStopOpponents: String = "No"
+    @State private var tippy: Bool = false
+    @State private var disabled: Bool = false
     
     // QR Code Image
     @State private var qrCodeImage: UIImage? = nil
@@ -99,6 +102,8 @@ struct ContentView: View {
                         stoppedOpponents: $stoppedOpponents,
                         impededOpponents: $impededOpponents,
                         didntStopOpponents: $didntStopOpponents,
+                        tippy: $tippy,
+                        disabled: $disabled,
                         comments: $comments
                     )
                     .tabItem {
@@ -128,7 +133,9 @@ struct ContentView: View {
                         endgameStatus: $endgameStatus,
                         stoppedOpponents: $stoppedOpponents,
                         impededOpponents: $impededOpponents,
-                        didntStopOpponents: $didntStopOpponents
+                        didntStopOpponents: $didntStopOpponents,
+                        tippy: $tippy,
+                        disbled: $disabled
                     )
 
                     .tabItem {
@@ -166,6 +173,7 @@ struct ContentView: View {
         autoCoral3 = 0
         autoCoral4 = 0
         processorScoreAuto = 0
+        algaeNetAuto = 0
         
         knockedOffAlgae = false
         teleopCoral1 = 0
@@ -173,11 +181,14 @@ struct ContentView: View {
         teleopCoral3 = 0
         teleopCoral4 = 0
         processorScoreTeleop = 0
+        algaeNetTeleop = 0
         
         endgameStatus = "Not Attempted"
         stoppedOpponents = "No"
         impededOpponents = "No"
         didntStopOpponents = "No"
+        tippy = false
+        disabled = false
         
         qrCodeImage = nil
     }

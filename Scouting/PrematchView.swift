@@ -9,9 +9,6 @@ struct PrematchView: View {
     let alliancePositions: [String]
 
     var body: some View {
-        
-        
-
             // Main content: Form
             Form {
                 Section(header: Text("Match Details")) {

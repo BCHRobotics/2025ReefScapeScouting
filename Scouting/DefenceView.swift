@@ -6,11 +6,13 @@ struct DefenceView: View {
     @Binding var stoppedOpponents: String
     @Binding var impededOpponents: String
     @Binding var didntStopOpponents: String
+    @Binding var tippy: Bool
+    @Binding var disabled: Bool
     @Binding var comments: String
     
     // Options for Endgame and Defence Metrics
-    let endgameOptions = ["Not Attempted", "Failed to Climb", "Shallow Cage", "Deep Cage"]
-    let yesNoOptions = ["No", "Yes"] // For Stopped, Impeded, and Didn't Stop Opponents
+    let endgameOptions = ["Not Attempted", "Parked" ,"Failed to Climb", "Shallow Cage", "Deep Cage"]
+    let yesNoOptions = ["No", "Yes"] 
     
     var body: some View {
         Form {
@@ -54,6 +56,14 @@ struct DefenceView: View {
                     }
                     .pickerStyle(MenuPickerStyle()) // Dropdown Menu Picker
                 }
+                
+                VStack(alignment: .leading) {
+                    Toggle("Was the robot tippy?", isOn: $tippy)
+                }
+                VStack(alignment: .leading) {
+                    Toggle("Did the robot disable?", isOn: $disabled)
+                }
+                
                 TextField("Comments", text: $comments)
             }
         }
