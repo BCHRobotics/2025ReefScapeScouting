@@ -1,12 +1,44 @@
-//
-//  StepperInput.swift
-//  Scouting
-//
-//  Created by Drake Mcgillivray on 2025-01-26.
-//
-
-
 import SwiftUI
+
+// Data Models
+public struct MatchDetails {
+    public var scouterInitials: String = ""
+    public var matchNumber: String = ""
+    public var teamNumber: String = ""
+    public var selectedAlliancePosition: String = "Default"
+}
+
+// Data structure for Auto phase
+public struct AutoData {
+    public var robotLeftStartingLine: Bool = false
+    public var coral1: Int = 0
+    public var coral2: Int = 0
+    public var coral3: Int = 0
+    public var coral4: Int = 0
+    public var processorScore: Int = 0
+    public var netAlgae: Int = 0
+}
+
+// Data structure for Teleop phase
+public struct TeleopData {
+    public var knockedOffAlgae: Bool = false
+    public var coral1: Int = 0
+    public var coral2: Int = 0
+    public var coral3: Int = 0
+    public var coral4: Int = 0
+    public var processorScore: Int = 0
+    public var netAlgae: Int = 0
+}
+
+public struct DefenceData {
+    public var endgameStatus: String = "Not Attempted"
+    public var stoppedOpponents: Bool = false
+    public var impededOpponents: Bool = false
+    public var didntStopOpponents: Bool = false
+    public var tippy: Bool = false
+    public var disabled: Bool = false
+    public var comments: String = ""
+}
 
 struct StepperInput: View {
     let label: String
@@ -22,6 +54,7 @@ struct StepperInput: View {
         }
     }
 }
+
 
 struct ToggleInput: View {
     var label: String

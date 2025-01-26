@@ -24,6 +24,7 @@ struct QRCodeView: View {
             // Display summarized stats
             ScrollView {
                 VStack(alignment: .leading, spacing: 10) {
+                    Text("App provided by team 2386").bold()
                     Text("Prematch Phase:").bold()
                     Group {
                         Text("Match Number:") + Text(" \(matchDetails.matchNumber.isEmpty ? "null" : matchDetails.matchNumber)")

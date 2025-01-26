@@ -23,5 +23,6 @@ struct PrematchView: View {
             
         }
         .navigationTitle("Prematch")
+        
     }
 }

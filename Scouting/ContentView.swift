@@ -1,53 +1,14 @@
 import SwiftUI
+import Combine
 
-// Data Models
-public struct MatchDetails {
-    public var scouterInitials: String = ""
-    public var matchNumber: String = ""
-    public var teamNumber: String = ""
-    public var selectedAlliancePosition: String = "Default"
-}
-
-// Data structure for Auto phase
-public struct AutoData {
-    public var robotLeftStartingLine: Bool = false
-    public var coral1: Int = 0
-    public var coral2: Int = 0
-    public var coral3: Int = 0
-    public var coral4: Int = 0
-    public var processorScore: Int = 0
-    public var netAlgae: Int = 0
-}
-
-// Data structure for Teleop phase
-public struct TeleopData {
-    public var knockedOffAlgae: Bool = false
-    public var coral1: Int = 0
-    public var coral2: Int = 0
-    public var coral3: Int = 0
-    public var coral4: Int = 0
-    public var processorScore: Int = 0
-    public var netAlgae: Int = 0
-}
-
-public struct DefenceData {
-    public var endgameStatus: String = "Not Attempted"
-    public var stoppedOpponents: Bool = false
-    public var impededOpponents: Bool = false
-    public var didntStopOpponents: Bool = false
-    public var tippy: Bool = false
-    public var disabled: Bool = false
-    public var comments: String = ""
-}
-
-// Main Content View
 struct ContentView: View {
     @State private var matchDetails = MatchDetails()
     @State private var autoData = AutoData()
     @State private var teleopData = TeleopData()
     @State private var defenceData = DefenceData()
     @State private var qrCodeImage: UIImage? = nil
-
+    
+    @State private var isKeyboardVisible = false
     private let alliancePositions = ["Default", "Red 1", "Red 2", "Red 3", "Blue 1", "Blue 2", "Blue 3"]
     private let endgameOptions = ["Not Attempted", "Parked", "Failed to Climb", "Shallow Cage", "Deep Cage"]
 
@@ -61,6 +22,7 @@ struct ContentView: View {
             // Background Image
             Image("fd_frc_reefscape_socialgraphics_igstory")
                 .resizable()
+                .edgesIgnoringSafeArea(.all)
 
             NavigationView {
                 TabView {
@@ -103,15 +65,51 @@ struct ContentView: View {
                         Label("QR Code", systemImage: "5.circle")
                     }
                 }
-                .navigationTitle("2386 Scouting App")
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button("Clear Form") {
-                            clearForm()
+                .navigationBarTitleDisplayMode(.inline)  // Use inline mode for smaller title
+                                .toolbar {
+                                    // Clear Form Button
+                                    ToolbarItem(placement: .navigationBarLeading) {
+                                        Button("Clear Form") {
+                                            clearForm()
+                                        }
+                                        .foregroundColor(.red)
+                                        .font(.headline)
+                                    }
+                                    
+                                    // Custom Navigation Title
+                                    ToolbarItem(placement: .principal) {
+                                        Text("FRC Scouter")
+                                            .font(.system(size: 18))  // Make title smaller
+                                            .bold()
+                                    }
+
+                                    // Show "Done" button only if the keyboard is visible
+                                    ToolbarItem(placement: .navigationBarTrailing) {
+                                        if isKeyboardVisible {
+                                            Button("Done") {
+                                                hideKeyboard()
+                                            }
+                                            .font(.headline)
+                                        }
+                                    }
+                                }
+                .onAppear {
+                    // Register for keyboard notifications when the view appears
+                    NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { _ in
+                        withAnimation {
+                            isKeyboardVisible = true
                         }
-                        .foregroundColor(.red)
-                        .font(.headline)
                     }
+                    NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { _ in
+                        withAnimation {
+                            isKeyboardVisible = false
+                        }
+                    }
+                }
+                .onDisappear {
+                    // Remove keyboard notifications when the view disappears
+                    NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+                    NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
                 }
             }
         }
@@ -124,6 +122,10 @@ struct ContentView: View {
         teleopData = TeleopData()
         defenceData = DefenceData()
         qrCodeImage = nil
-        //self.navigationController?.popToViewController(animated: true)
+    }
+    
+    // Function to hide the keyboard
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
