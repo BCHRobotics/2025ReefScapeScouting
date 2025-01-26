@@ -33,7 +33,7 @@ public struct TeleopData {
 public struct DefenceData {
     public var endgameStatus: String = "Not Attempted"
     public var stoppedOpponents: Bool = false
-    public var impededOpponents: Bool = false
+    public var triedToStopOpponents: Bool = false
     public var didntStopOpponents: Bool = false
     public var tippy: Bool = false
     public var disabled: Bool = false

@@ -53,7 +53,7 @@ struct QRCodeView: View {
                     Group {
                         Text("• Endgame Status:") + Text(" \(defenceData.endgameStatus.isEmpty ? "null" : defenceData.endgameStatus)")
                         Text("• Stopped Opponents:") + Text(" \(defenceData.stoppedOpponents ? "Yes" : "No")")
-                        Text("• Impeded Opponents:") + Text(" \(defenceData.impededOpponents ? "Yes" : "No")")
+                        Text("• Impeded Opponents:") + Text(" \(defenceData.triedToStopOpponents ? "Yes" : "No")")
                         Text("• Didn't Stop Opponents:") + Text(" \(defenceData.didntStopOpponents ? "Yes" : "No")")
                     }
 
@@ -130,7 +130,7 @@ struct QRCodeView: View {
            \(teleopData.netAlgae)\t\
            \(defenceData.endgameStatus.isEmpty ? "null" : defenceData.endgameStatus)\t\
            \(defenceData.stoppedOpponents ? "Yes" : "No")\t\
-           \(defenceData.impededOpponents ? "Yes" : "No")\t\
+           \(defenceData.triedToStopOpponents ? "Yes" : "No")\t\
            \(defenceData.didntStopOpponents ? "Yes" : "No")\t\
            \(defenceData.tippy ? "1" : "0")\t\
            \(defenceData.disabled ? "1" : "0")\t\           

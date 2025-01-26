@@ -18,7 +18,7 @@ struct DefenceView: View {
             // Defence Metrics Section
             Section(header: Text("Defence Metrics")) {
                 ToggleInput(label: "Stopped Opponents", isOn: $defenceData.stoppedOpponents)
-                ToggleInput(label: "Impeded Opponents", isOn: $defenceData.impededOpponents)
+                ToggleInput(label: "Tried to Stop Opponents", isOn: $defenceData.triedToStopOpponents)
                 ToggleInput(label: "Didn't Stop Opponents", isOn: $defenceData.didntStopOpponents)
             }
             
