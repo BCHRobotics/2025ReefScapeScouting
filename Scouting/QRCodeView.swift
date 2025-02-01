@@ -84,6 +84,7 @@ struct QRCodeView: View {
             VStack {
                 if let qrCodeImage = qrCodeImage {
                     Text("Match Number: \(matchDetails.matchNumber)")
+                    Text("Scouter Initials: \(matchDetails.scouterInitials)")
                     Image(uiImage: qrCodeImage)
                         .resizable()
                         .scaledToFit()
