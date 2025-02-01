@@ -3,25 +3,24 @@ import CoreImage.CIFilterBuiltins
 import UIKit
 
 struct QRCodeView: View {
-    // Bindings to the data passed from ContentView
     @Binding var matchDetails: MatchDetails
     @Binding var autoData: AutoData
     @Binding var teleopData: TeleopData
     @Binding var defenceData: DefenceData
     
     @State private var qrCodeImage: UIImage? = nil
-    @State private var showingQRCode = false  // State to control showing the QR code sheet
+    @State private var showingQRCode = false
     @State private var showSaveConfirmation = false
-    
+    @State private var showSavedQRCodes = false
+    @State private var saveMessage = "" // Message for the alert
+
     var body: some View {
         VStack(spacing: 20) {
-            // Heading
             Text("QR Code Summary")
                 .font(.title)
                 .fontWeight(.bold)
                 .padding(.top)
             
-            // Display summarized stats
             ScrollView {
                 VStack(alignment: .leading, spacing: 10) {
                     Text("App provided by team 2386").bold()
@@ -63,24 +62,31 @@ struct QRCodeView: View {
                 .background(Color(.secondarySystemBackground))
                 .cornerRadius(10)
             }
-            
-            // Button to regenerate QR code
-            Button("Generate QR Code") {
-                generateQRCode()
-                showingQRCode = true  // Show the QR code sheet when the button is tapped
+
+            HStack {
+                Button("Generate QR Code") {
+                    generateQRCode()
+                    showingQRCode = true
+                }
+                .padding()
+                .background(Color.blue)
+                .foregroundColor(.white)
+                .cornerRadius(10)
+
+                Button("Saved QR Codes") {
+                    showSavedQRCodes = true
+                }
+                .padding()
+                .background(Color.green)
+                .foregroundColor(.white)
+                .cornerRadius(10)
             }
-            .padding()
-            .background(Color.blue)
-            .foregroundColor(.white)
-            .cornerRadius(10)
-            .font(.headline)
         }
         .padding()
         .onAppear {
             generateQRCode()  // Automatically generate the QR code when the view appears
         }
         .sheet(isPresented: $showingQRCode) {
-            // Show QR Code in a modal sheet
             VStack {
                 if let qrCodeImage = qrCodeImage {
                     Text("Match Number: \(matchDetails.matchNumber)")
@@ -94,22 +100,38 @@ struct QRCodeView: View {
                     Text("QR Code will appear here.")
                         .padding()
                 }
-                
-                Button("Close") {
-                    showingQRCode = false  // Close the sheet when tapped
+                HStack {
+                    Button("Save QR Code") {
+                        saveQRCode()
+                    }
+                    .padding()
+                    .background(Color.green)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+                    .font(.headline)
+                    
+                    Button("Close") {
+                        showingQRCode = false
+                    }
+                    .padding()
+                    .background(Color.red)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+                    .font(.headline)
+ 
                 }
-                .padding()
-                .background(Color.red)
-                .foregroundColor(.white)
-                .cornerRadius(10)
-                .font(.headline)
             }
             .padding()
         }
+        .sheet(isPresented: $showSavedQRCodes) {
+            SavedQRCodesView()
+        }
+        .alert(isPresented: $showSaveConfirmation) {
+            Alert(title: Text("Save Confirmation"), message: Text(saveMessage), dismissButton: .default(Text("OK")))
+        }
     }
-    
+
     func generateQRCode() {
-        // Tab-delimited data for Excel compatibility
         let combinedData = """
            \(matchDetails.matchNumber.isEmpty ? "null" : matchDetails.matchNumber)\t\
            \(matchDetails.teamNumber.isEmpty ? "null" : matchDetails.teamNumber)\t\
@@ -138,7 +160,6 @@ struct QRCodeView: View {
            \(defenceData.comments.isEmpty ? "null" : defenceData.comments)
            """
         
-        // Convert the data to generate QR Code
         if let data = combinedData.data(using: .utf8) {
             let filter = CIFilter.qrCodeGenerator()
             filter.setValue(data, forKey: "inputMessage")
@@ -154,5 +175,41 @@ struct QRCodeView: View {
                 }
             }
         }
+    }
+
+    func saveQRCode() {
+        guard let qrCodeImage = qrCodeImage else {
+            return
+        }
+        
+        let qrCodesFolder = getDocumentsDirectory().appendingPathComponent("QRCodes")
+        do {
+            try FileManager.default.createDirectory(at: qrCodesFolder, withIntermediateDirectories: true, attributes: nil)
+        } catch {
+            print("Error creating directory: \(error.localizedDescription)")
+            return
+        }
+        
+        let filename = "QRCode_\(matchDetails.matchNumber)_\(matchDetails.scouterInitials).png"
+        let url = qrCodesFolder.appendingPathComponent(filename)
+        
+        if let data = qrCodeImage.pngData() {
+            do {
+                try data.write(to: url)
+                
+                saveMessage = "QR code successfully saved!"
+                DispatchQueue.main.async {
+                    showingQRCode = false
+                    showSaveConfirmation = true
+                }
+            } catch {
+                print("Error saving QR code: \(error.localizedDescription)")
+            }
+        }
+    }
+
+
+    func getDocumentsDirectory() -> URL {
+        FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     }
 }
