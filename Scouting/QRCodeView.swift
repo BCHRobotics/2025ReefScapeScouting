@@ -17,7 +17,7 @@ struct QRCodeView: View {
     var body: some View {
         VStack(spacing: 20) {
             Text("QR Code Summary")
-                .font(.title)
+                .font(.title3)
                 .fontWeight(.bold)
                 .padding(.top)
             

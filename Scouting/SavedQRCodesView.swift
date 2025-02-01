@@ -6,87 +6,59 @@ struct SavedQRCodesView: View {
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
-        VStack {
-            HStack {
-                Button(action: {
-                    dismiss()  // Close the saved QR codes view
-                }) {
-                    Text("Close")
-                        .foregroundColor(.red)
-                        .fontWeight(.bold)
+        NavigationView {
+            VStack {
+                if savedQRCodes.isEmpty {
+                    Text("No QR Codes Saved")
+                        .foregroundColor(.gray)
+                        .padding()
+                } else {
+                    ScrollView {
+                        LazyVStack(spacing: 12) {
+                            ForEach(savedQRCodes, id: \.self) { qrCodeURL in
+                                QRCodeRowView(
+                                    qrCodeURL: qrCodeURL,
+                                    isSelected: selectedQRCodes.contains(qrCodeURL)
+                                )
+                                .onTapGesture {
+                                    toggleSelection(qrCodeURL)
+                                }
+                            }
+                        }
+                        .padding(.vertical)
+                    }
                 }
-                .padding(.leading)
-
-                Text("My QR Codes")
-                    .font(.system(size: 18))
-                    .fontWeight(.bold) // Lighter than bold
-                    .lineLimit(1) // Ensure it stays on one line
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .padding()
-
-                Button(action: {
-                    deleteSelectedQRCodes()
-                }) {
-                    Text("Delete")
-                        .foregroundColor(.red)
-                        .fontWeight(.bold)
-                }
-                .padding(.trailing)
-                .disabled(selectedQRCodes.isEmpty)
             }
-            .padding([.top, .horizontal])
-
-            ScrollView {
-                ForEach(savedQRCodes, id: \.self) { qrCodeURL in
-                    VStack {
-                        if let qrImage = UIImage(contentsOfFile: qrCodeURL.path) {
-                            Image(uiImage: qrImage)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 200, height: 200)
-                                .padding()
-                            
-                            // Extract the match number based on filename format: QRCode_<matchNumber>_<scouterInitials>.png
-                            if let matchNumber = extractMatchNumber(from: qrCodeURL) {
-                                Text("Match Number: \(matchNumber)")
-                                    .font(.caption) // Smaller font size
-                                    .foregroundColor(.gray)
-                                    .padding([.top, .bottom], 5)
-                            }
-                        }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Close") {
+                        dismiss()
                     }
-                    .background(Color(.secondarySystemBackground))
-                    .cornerRadius(10)
-                    .padding([.top, .bottom], 10)
-                    .contentShape(Rectangle()) // Makes the entire area tappable
-                    .onTapGesture {
-                        toggleSelection(qrCodeURL)
+                    .foregroundColor(.red)
+                }
+                ToolbarItem(placement: .principal) {
+                                   Text("My QR Codes")
+                                       .font(.headline)
+                                       .lineLimit(1)
+                               }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Delete") {
+                        deleteSelectedQRCodes()
                     }
-                    .overlay(
-                        Group {
-                            if selectedQRCodes.contains(qrCodeURL) {
-                                Rectangle()
-                                    .strokeBorder(Color.blue, lineWidth: 2)
-                                    .cornerRadius(10)
-                            }
-                        }
-                    )
+                    .foregroundColor(.red)
+                    .disabled(selectedQRCodes.isEmpty)
                 }
             }
             .onAppear(perform: loadSavedQRCodes)
         }
-        .padding()
     }
 
     func loadSavedQRCodes() {
         let documentsDirectory = getDocumentsDirectory()
         let qrCodesFolder = documentsDirectory.appendingPathComponent("QRCodes")
 
-        // Get all PNG files from the "QRCodes" folder
         let fileManager = FileManager.default
         let files = try? fileManager.contentsOfDirectory(at: qrCodesFolder, includingPropertiesForKeys: nil)
-
-        // Filter out only the PNG files (QR codes)
         savedQRCodes = files?.filter { $0.pathExtension == "png" } ?? []
 
         // Sort the QR codes by match number
@@ -100,15 +72,9 @@ struct SavedQRCodesView: View {
     }
 
     func extractMatchNumber(from url: URL) -> Int? {
-        // Extract match number from the filename: QRCode_<matchNumber>_<scouterInitials>.png
         let filename = url.deletingPathExtension().lastPathComponent
         let components = filename.split(separator: "_")
-        
-        if components.count > 1, let matchNumber = Int(components[1]) {
-            return matchNumber
-        }
-        
-        return nil
+        return components.count > 1 ? Int(components[1]) : nil
     }
 
     func toggleSelection(_ qrCodeURL: URL) {
@@ -121,7 +87,6 @@ struct SavedQRCodesView: View {
 
     func deleteSelectedQRCodes() {
         let fileManager = FileManager.default
-
         for qrCodeURL in selectedQRCodes {
             do {
                 try fileManager.removeItem(at: qrCodeURL)
@@ -129,13 +94,47 @@ struct SavedQRCodesView: View {
                 print("Error deleting QR code: \(error.localizedDescription)")
             }
         }
-
-        // Refresh the list of saved QR codes after deletion
         loadSavedQRCodes()
-        selectedQRCodes.removeAll() // Reset selected items
+        selectedQRCodes.removeAll()
     }
 
     func getDocumentsDirectory() -> URL {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    }
+}
+
+struct QRCodeRowView: View {
+    let qrCodeURL: URL
+    let isSelected: Bool
+
+    var body: some View {
+        VStack {
+            if let qrImage = UIImage(contentsOfFile: qrCodeURL.path) {
+                Image(uiImage: qrImage)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: 200)
+                    .padding()
+
+                if let matchNumber = extractMatchNumber(from: qrCodeURL) {
+                    Text("Match Number: \(matchNumber)")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                        .padding(.bottom, 5)
+                }
+            }
+        }
+        .background(isSelected ? Color.blue.opacity(0.2) : Color(.secondarySystemBackground))
+        .cornerRadius(10)
+        .overlay(
+            isSelected ? RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 2) : nil
+        )
+        .padding(.horizontal)
+    }
+
+    func extractMatchNumber(from url: URL) -> Int? {
+        let filename = url.deletingPathExtension().lastPathComponent
+        let components = filename.split(separator: "_")
+        return components.count > 1 ? Int(components[1]) : nil
     }
 }
