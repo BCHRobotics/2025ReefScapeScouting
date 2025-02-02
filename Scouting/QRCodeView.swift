@@ -63,23 +63,28 @@ struct QRCodeView: View {
             }
 
             HStack {
-                Button("Generate QR Code") {
+                Button("Generate") {
                     generateQRCode()
                     showingQRCode = true
                 }
-                .padding()
-                .background(Color.blue)
-                .foregroundColor(.white)
-                .cornerRadius(10)
-
-                Button("Saved QR Codes") {
-                    showSavedQRCodes = true
-                }
+                .frame(maxWidth: .infinity)
                 .padding()
                 .background(Color.green)
                 .foregroundColor(.white)
+                .font(.headline)
+                .cornerRadius(10)
+
+                Button("My QR Codes") {
+                    showSavedQRCodes = true
+                }
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(Color.blue)
+                .foregroundColor(.white)
+                .font(.headline)
                 .cornerRadius(10)
             }
+
         }
         .padding()
         .onAppear {
@@ -100,10 +105,11 @@ struct QRCodeView: View {
                         .padding()
                 }
                 HStack {
-                    Button("Save QR Code") {
+                    Button("Save") {
                         saveQRCode()
                     }
                     .padding()
+                    .frame(maxWidth: 250/2)
                     .background(Color.green)
                     .foregroundColor(.white)
                     .cornerRadius(10)
@@ -113,6 +119,7 @@ struct QRCodeView: View {
                         showingQRCode = false
                     }
                     .padding()
+                    .frame(maxWidth:250/2)
                     .background(Color.red)
                     .foregroundColor(.white)
                     .cornerRadius(10)
