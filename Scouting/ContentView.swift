@@ -78,7 +78,7 @@ struct ContentView: View {
                     
                     // Custom Navigation Title
                     ToolbarItem(placement: .principal) {
-                        Text("FRC Scouter")
+                        Text("Bot Watch")
                             .font(.system(size: 18))  // Make title smaller
                             .bold()
                     }
@@ -114,7 +114,7 @@ struct ContentView: View {
             }
         }
         .alert(isPresented: $showingInfoAlert) {
-            Alert(title: Text("FRC Scouter"), message: Text("Brought to you by Team 2386 and the Programming Team. We would like to thank you for using our app and hope you enjoyed it!"), dismissButton: .default(Text("OK")))
+            Alert(title: Text("Bot Watch"),  message: Text("This app is proudly brought to you by FRC Team 2386 and our Programming Team. We appreciate you using Bot Watch, and we hope it helped make your scouting experience even better. Thank you for being part of our journey!"), dismissButton: .default(Text("OK")))
         }
     }
 
