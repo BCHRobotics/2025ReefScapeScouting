@@ -9,8 +9,7 @@ struct ContentView: View {
     @State private var qrCodeImage: UIImage? = nil
     
     @State private var isKeyboardVisible = false
-    private let alliancePositions = ["Default", "Red 1", "Red 2", "Red 3", "Blue 1", "Blue 2", "Blue 3"]
-    private let endgameOptions = ["Not Attempted", "Parked", "Failed to Climb", "Shallow Cage", "Deep Cage"]
+  
 
     init() {
         UITabBar.appearance().backgroundColor = UIColor.white
@@ -115,7 +114,7 @@ struct ContentView: View {
             }
         }
         .alert(isPresented: $showingInfoAlert) {
-            Alert(title: Text("FRC Scouter"), message: Text("Brought to you by Team 2386 and the Programming Team"), dismissButton: .default(Text("OK")))
+            Alert(title: Text("FRC Scouter"), message: Text("Brought to you by Team 2386 and the Programming Team. We would like to thank you for using our app and hope you enjoyed it!"), dismissButton: .default(Text("OK")))
         }
     }
 

@@ -40,6 +40,9 @@ public struct DefenceData {
     public var comments: String = ""
 }
 
+public let alliancePositions = ["Default", "Red 1", "Red 2", "Red 3", "Blue 1", "Blue 2", "Blue 3"]
+public let endgameOptions = ["Not Attempted", "Parked", "Failed to Climb", "Shallow Cage", "Deep Cage"]
+
 struct StepperInput: View {
     let label: String
     @Binding var value: Int

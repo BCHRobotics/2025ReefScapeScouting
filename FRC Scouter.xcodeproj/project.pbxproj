@@ -24,9 +24,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3EC9DA8E2D3C427400653213 /* Scouting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scouting.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3EC9DA9F2D3C427600653213 /* ScoutingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScoutingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3EC9DAA92D3C427600653213 /* ScoutingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScoutingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3EC9DA8E2D3C427400653213 /* FRC Scouter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FRC Scouter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3EC9DA9F2D3C427600653213 /* FRC ScouterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FRC ScouterTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3EC9DAA92D3C427600653213 /* FRC ScouterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FRC ScouterUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -85,9 +85,9 @@
 		3EC9DA8F2D3C427400653213 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3EC9DA8E2D3C427400653213 /* Scouting.app */,
-				3EC9DA9F2D3C427600653213 /* ScoutingTests.xctest */,
-				3EC9DAA92D3C427600653213 /* ScoutingUITests.xctest */,
+				3EC9DA8E2D3C427400653213 /* FRC Scouter.app */,
+				3EC9DA9F2D3C427600653213 /* FRC ScouterTests.xctest */,
+				3EC9DAA92D3C427600653213 /* FRC ScouterUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,9 +95,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3EC9DA8D2D3C427400653213 /* Scouting */ = {
+		3EC9DA8D2D3C427400653213 /* FRC Scouter */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3EC9DAB32D3C427600653213 /* Build configuration list for PBXNativeTarget "Scouting" */;
+			buildConfigurationList = 3EC9DAB32D3C427600653213 /* Build configuration list for PBXNativeTarget "FRC Scouter" */;
 			buildPhases = (
 				3EC9DA8A2D3C427400653213 /* Sources */,
 				3EC9DA8B2D3C427400653213 /* Frameworks */,
@@ -110,16 +110,16 @@
 			fileSystemSynchronizedGroups = (
 				3EC9DA902D3C427400653213 /* Scouting */,
 			);
-			name = Scouting;
+			name = "FRC Scouter";
 			packageProductDependencies = (
 			);
 			productName = Scouting;
-			productReference = 3EC9DA8E2D3C427400653213 /* Scouting.app */;
+			productReference = 3EC9DA8E2D3C427400653213 /* FRC Scouter.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3EC9DA9E2D3C427600653213 /* ScoutingTests */ = {
+		3EC9DA9E2D3C427600653213 /* FRC ScouterTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3EC9DAB62D3C427600653213 /* Build configuration list for PBXNativeTarget "ScoutingTests" */;
+			buildConfigurationList = 3EC9DAB62D3C427600653213 /* Build configuration list for PBXNativeTarget "FRC ScouterTests" */;
 			buildPhases = (
 				3EC9DA9B2D3C427600653213 /* Sources */,
 				3EC9DA9C2D3C427600653213 /* Frameworks */,
@@ -133,16 +133,16 @@
 			fileSystemSynchronizedGroups = (
 				3EC9DAA22D3C427600653213 /* ScoutingTests */,
 			);
-			name = ScoutingTests;
+			name = "FRC ScouterTests";
 			packageProductDependencies = (
 			);
 			productName = ScoutingTests;
-			productReference = 3EC9DA9F2D3C427600653213 /* ScoutingTests.xctest */;
+			productReference = 3EC9DA9F2D3C427600653213 /* FRC ScouterTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		3EC9DAA82D3C427600653213 /* ScoutingUITests */ = {
+		3EC9DAA82D3C427600653213 /* FRC ScouterUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3EC9DAB92D3C427600653213 /* Build configuration list for PBXNativeTarget "ScoutingUITests" */;
+			buildConfigurationList = 3EC9DAB92D3C427600653213 /* Build configuration list for PBXNativeTarget "FRC ScouterUITests" */;
 			buildPhases = (
 				3EC9DAA52D3C427600653213 /* Sources */,
 				3EC9DAA62D3C427600653213 /* Frameworks */,
@@ -156,11 +156,11 @@
 			fileSystemSynchronizedGroups = (
 				3EC9DAAC2D3C427600653213 /* ScoutingUITests */,
 			);
-			name = ScoutingUITests;
+			name = "FRC ScouterUITests";
 			packageProductDependencies = (
 			);
 			productName = ScoutingUITests;
-			productReference = 3EC9DAA92D3C427600653213 /* ScoutingUITests.xctest */;
+			productReference = 3EC9DAA92D3C427600653213 /* FRC ScouterUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -186,7 +186,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3EC9DA892D3C427400653213 /* Build configuration list for PBXProject "Scouting" */;
+			buildConfigurationList = 3EC9DA892D3C427400653213 /* Build configuration list for PBXProject "FRC Scouter" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -200,9 +200,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3EC9DA8D2D3C427400653213 /* Scouting */,
-				3EC9DA9E2D3C427600653213 /* ScoutingTests */,
-				3EC9DAA82D3C427600653213 /* ScoutingUITests */,
+				3EC9DA8D2D3C427400653213 /* FRC Scouter */,
+				3EC9DA9E2D3C427600653213 /* FRC ScouterTests */,
+				3EC9DAA82D3C427600653213 /* FRC ScouterUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -258,12 +258,12 @@
 /* Begin PBXTargetDependency section */
 		3EC9DAA12D3C427600653213 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3EC9DA8D2D3C427400653213 /* Scouting */;
+			target = 3EC9DA8D2D3C427400653213 /* FRC Scouter */;
 			targetProxy = 3EC9DAA02D3C427600653213 /* PBXContainerItemProxy */;
 		};
 		3EC9DAAB2D3C427600653213 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3EC9DA8D2D3C427400653213 /* Scouting */;
+			target = 3EC9DA8D2D3C427400653213 /* FRC Scouter */;
 			targetProxy = 3EC9DAAA2D3C427600653213 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -481,7 +481,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scouting.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Scouting";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FRC Scouter.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FRC Scouter";
 				XROS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Debug;
@@ -504,7 +504,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scouting.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Scouting";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FRC Scouter.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FRC Scouter";
 				XROS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Release;
@@ -556,7 +556,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3EC9DA892D3C427400653213 /* Build configuration list for PBXProject "Scouting" */ = {
+		3EC9DA892D3C427400653213 /* Build configuration list for PBXProject "FRC Scouter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3EC9DAB12D3C427600653213 /* Debug */,
@@ -565,7 +565,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3EC9DAB32D3C427600653213 /* Build configuration list for PBXNativeTarget "Scouting" */ = {
+		3EC9DAB32D3C427600653213 /* Build configuration list for PBXNativeTarget "FRC Scouter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3EC9DAB42D3C427600653213 /* Debug */,
@@ -574,7 +574,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3EC9DAB62D3C427600653213 /* Build configuration list for PBXNativeTarget "ScoutingTests" */ = {
+		3EC9DAB62D3C427600653213 /* Build configuration list for PBXNativeTarget "FRC ScouterTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3EC9DAB72D3C427600653213 /* Debug */,
@@ -583,7 +583,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3EC9DAB92D3C427600653213 /* Build configuration list for PBXNativeTarget "ScoutingUITests" */ = {
+		3EC9DAB92D3C427600653213 /* Build configuration list for PBXNativeTarget "FRC ScouterUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3EC9DABA2D3C427600653213 /* Debug */,
