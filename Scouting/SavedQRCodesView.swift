@@ -122,6 +122,12 @@ struct QRCodeRowView: View {
                         .foregroundColor(.gray)
                         .padding(.bottom, 5)
                 }
+                if let teamNumber = extractTeamNumber(from: qrCodeURL) {
+                                    Text("Team Number: \(teamNumber)")
+                                        .font(.caption)
+                                        .foregroundColor(.gray)
+                                        .padding(.bottom, 5)
+                                }
             }
         }
         .background(isSelected ? Color.blue.opacity(0.2) : Color(.secondarySystemBackground))
@@ -137,4 +143,10 @@ struct QRCodeRowView: View {
         let components = filename.split(separator: "_")
         return components.count > 1 ? Int(components[1]) : nil
     }
+    func extractTeamNumber(from url: URL) -> Int? {
+        let filename = url.deletingPathExtension().lastPathComponent
+        let components = filename.split(separator: "_")
+        return components.count > 2 ? Int(components[2]) : nil
+    }
+
 }

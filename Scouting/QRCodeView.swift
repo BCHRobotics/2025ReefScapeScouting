@@ -23,7 +23,6 @@ struct QRCodeView: View {
             
             ScrollView {
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("App provided by team 2386").bold()
                     Text("Prematch Phase:").bold()
                     Group {
                         Text("Match Number:") + Text(" \(matchDetails.matchNumber.isEmpty ? "null" : matchDetails.matchNumber)")
@@ -190,7 +189,7 @@ struct QRCodeView: View {
             return
         }
         
-        let filename = "QRCode_\(matchDetails.matchNumber)_\(matchDetails.scouterInitials).png"
+        let filename = "QRCode_\(matchDetails.matchNumber)_\(matchDetails.teamNumber).png"
         let url = qrCodesFolder.appendingPathComponent(filename)
         
         if let data = qrCodeImage.pngData() {

@@ -89,4 +89,26 @@ struct PickerInput: View {
     }
 }
 
+struct DoneButtonToolbar: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard) {
+                    Button("Done") {
+                        // Dismiss the keyboard
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .trailing) // Ensure the button takes the full width and aligns right
+                    .padding()
+                    .bold()
+                }
+            }
+    }
+}
+
+extension View {
+    func doneButtonToolbar() -> some View {
+        self.modifier(DoneButtonToolbar())
+    }
+}
 

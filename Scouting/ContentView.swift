@@ -65,34 +65,35 @@ struct ContentView: View {
                         Label("QR Code", systemImage: "5.circle")
                     }
                 }
+                .doneButtonToolbar()
                 .navigationBarTitleDisplayMode(.inline)  // Use inline mode for smaller title
-                                .toolbar {
-                                    // Clear Form Button
-                                    ToolbarItem(placement: .navigationBarLeading) {
-                                        Button("Clear Form") {
-                                            clearForm()
-                                        }
-                                        .foregroundColor(.red)
-                                        .font(.headline)
-                                    }
-                                    
-                                    // Custom Navigation Title
-                                    ToolbarItem(placement: .principal) {
-                                        Text("FRC Scouter")
-                                            .font(.system(size: 18))  // Make title smaller
-                                            .bold()
-                                    }
+                .toolbar {
+                    // Clear Form Button
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button("Clear Form") {
+                            clearForm()
+                        }
+                        .foregroundColor(.red)
+                        .font(.headline)
+                    }
+                    
+                    // Custom Navigation Title
+                    ToolbarItem(placement: .principal) {
+                        Text("FRC Scouter")
+                            .font(.system(size: 18))  // Make title smaller
+                            .bold()
+                    }
 
-                                    // Show "Done" button only if the keyboard is visible
-                                    ToolbarItem(placement: .navigationBarTrailing) {
-                                        if isKeyboardVisible {
-                                            Button("Done") {
-                                                hideKeyboard()
-                                            }
-                                            .font(.headline)
-                                        }
-                                    }
-                                }
+                    // Info Button
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: {
+                            showAlert()
+                        }) {
+                            Image(systemName: "info.circle")
+                                .font(.system(size: 18))
+                        }
+                    }
+                }
                 .onAppear {
                     // Register for keyboard notifications when the view appears
                     NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { _ in
@@ -113,6 +114,15 @@ struct ContentView: View {
                 }
             }
         }
+        .alert(isPresented: $showingInfoAlert) {
+            Alert(title: Text("FRC Scouter"), message: Text("Brought to you by Team 2386 and the Programming Team"), dismissButton: .default(Text("OK")))
+        }
+    }
+
+    @State private var showingInfoAlert = false
+
+    private func showAlert() {
+        showingInfoAlert = true
     }
 
     // Function to reset all data
@@ -122,10 +132,5 @@ struct ContentView: View {
         teleopData = TeleopData()
         defenceData = DefenceData()
         qrCodeImage = nil
-    }
-    
-    // Function to hide the keyboard
-    func hideKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
