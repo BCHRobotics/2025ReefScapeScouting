@@ -45,6 +45,11 @@
 			path = ScoutingUITests;
 			sourceTree = "<group>";
 		};
+		3EC9DB512D50212100653213 /* ScreenShots */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ScreenShots;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +80,7 @@
 		3EC9DA852D3C427400653213 = {
 			isa = PBXGroup;
 			children = (
+				3EC9DB512D50212100653213 /* ScreenShots */,
 				3EC9DA902D3C427400653213 /* Scouting */,
 				3EC9DAA22D3C427600653213 /* ScoutingTests */,
 				3EC9DAAC2D3C427600653213 /* ScoutingUITests */,
@@ -109,6 +115,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				3EC9DA902D3C427400653213 /* Scouting */,
+				3EC9DB512D50212100653213 /* ScreenShots */,
 			);
 			name = "Bot Watch";
 			packageProductDependencies = (
