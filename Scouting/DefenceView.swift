@@ -23,8 +23,8 @@ struct DefenceView: View {
             }
             
             // Robot Control Section
-            Section(header: Text("Robot Control")) {
-                ToggleInput(label: "Was the robot tippy?", isOn: $defenceData.tippy)
+            Section(header: Text("Robot")) {
+                ToggleInput(label: "Was the robot unbalanced?", isOn: $defenceData.tippy)
                 ToggleInput(label: "Did the robot disable?", isOn: $defenceData.disabled)
             }
             

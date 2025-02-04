@@ -53,6 +53,8 @@ struct QRCodeView: View {
                         Text("• Stopped Opponents:") + Text(" \(defenceData.stoppedOpponents ? "Yes" : "No")")
                         Text("• Impeded Opponents:") + Text(" \(defenceData.triedToStopOpponents ? "Yes" : "No")")
                         Text("• Didn't Stop Opponents:") + Text(" \(defenceData.didntStopOpponents ? "Yes" : "No")")
+                        Text("• Was the Robot Unbalanced:") + Text(" \(defenceData.tippy ? "Yes" : "No")")
+                        Text("• Was the Robot Disabled:") + Text(" \(defenceData.disabled ? "Yes" : "No")")
                     }
 
                     Text("Comments:").bold() + Text(" \(defenceData.comments.isEmpty ? "null" : defenceData.comments)")
