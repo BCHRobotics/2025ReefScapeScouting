@@ -11,10 +11,6 @@ struct ContentView: View {
     @State private var isKeyboardVisible = false
   
 
-    init() {
-        UITabBar.appearance().backgroundColor = UIColor.white
-        UITabBar.appearance().unselectedItemTintColor = UIColor.gray
-    }
 
     var body: some View {
         ZStack {
