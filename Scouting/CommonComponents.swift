@@ -47,7 +47,7 @@ struct DefenceData {
     public var comments: String = ""
 }
 
-public let alliancePositions = ["Default", "Red 1", "Red 2", "Red 3", "Blue 1", "Blue 2", "Blue 3"]
+public let alliancePositions = ["Red 1", "Red 2", "Red 3", "Blue 1", "Blue 2", "Blue 3"]
 
 struct StepperInput: View {
     let label: String
