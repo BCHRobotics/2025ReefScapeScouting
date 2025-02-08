@@ -57,7 +57,7 @@ struct QRCodeView: View {
                     Group {
                         Text("• Attempted Defence:") + Text(" \(defenceData.defenseStatus == .attemptedToStopOpponenets ? "Yes" : "No")")
                         Text("• Stopped Opponents:") + Text(" \(defenceData.defenseStatus == .stoppedOpponenes ? "Yes" : "No")")
-                        Text("• Was the Robot Disabled?:") + Text(" \(defenceData.disabled ? "Yes" : "No")")
+                        Text("• Was The Robot Disabled?:") + Text(" \(defenceData.disabled ? "Yes" : "No")")
                         Text("• Did The Robot Tip Over?:") + Text(" \(defenceData.tippy ? "Yes" : "No")")
                         }
                         
@@ -109,7 +109,7 @@ struct QRCodeView: View {
                         .frame(width: 250, height: 250)
                         .padding()
                 } else {
-                    Text("QR Code will appear here.")
+                    Text("QR Code Will Appear Here.")
                         .padding()
                 }
                 HStack {

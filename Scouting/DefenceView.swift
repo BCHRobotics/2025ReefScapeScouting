@@ -61,7 +61,7 @@ struct DefenceView: View {
                 // Defence Metrics Section
                 Section(header: Text("Defence Metrics")) {
                     ToggleInput(
-                        label: "Did not Stop Opponents",
+                        label: "Did Not Stop Opponents",
                         isOn: Binding(
                             get: { defenceData.defenseStatus == .none },
                             set: { newValue in
@@ -83,7 +83,7 @@ struct DefenceView: View {
                         )
                     )
                     ToggleInput(
-                        label: "Attempted to Stop Opponents",
+                        label: "Attempted To Stop Opponents",
                         isOn: Binding(
                             get: { defenceData.defenseStatus == .attemptedToStopOpponenets },
                             set: { newValue in
@@ -98,12 +98,12 @@ struct DefenceView: View {
                 // Robot Control Section
                 Section(header: Text("Robot")) {
                     ToggleInput(label: "Did The Robot Almost Tip Over?", isOn: $defenceData.tippy)
-                    ToggleInput(label: "Did the robot disable?", isOn: $defenceData.disabled)
+                    ToggleInput(label: "Did The Robot Disable?", isOn: $defenceData.disabled)
                 }
                 
                 // Comments Field
                 Section(header: Text("Comments")) {
-                    TextField("Enter comments here...", text: $defenceData.comments)
+                    TextField("Enter Comments Here...", text: $defenceData.comments)
                 }
             }
             .navigationTitle("Defence Metrics")

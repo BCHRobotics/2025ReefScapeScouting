@@ -54,7 +54,7 @@ struct SavedQRCodesView: View {
             .onAppear(perform: loadSavedQRCodes)
             .alert(isPresented: $showDeleteConfirmation) {
                 Alert(
-                    title: Text("Are you sure?"),
+                    title: Text("Are You Sure?"),
                     message: Text("This action will permanently delete the selected QR codes."),
                     primaryButton: .destructive(Text("Delete")) {
                         deleteSelectedQRCodes()
@@ -103,7 +103,7 @@ struct SavedQRCodesView: View {
             do {
                 try fileManager.removeItem(at: qrCodeURL)
             } catch {
-                print("Error deleting QR code: \(error.localizedDescription)")
+                print("Error Deleting QR Code: \(error.localizedDescription)")
             }
         }
         loadSavedQRCodes()
