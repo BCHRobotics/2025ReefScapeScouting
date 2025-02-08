@@ -7,7 +7,7 @@ struct TeleopView: View {
         Form {
             Section(header: Text("Teleop Phase")) {
                 
-
+                ToggleInput(label: "Knocked Off Algae", isOn: $teleopData.knockedOffAlgae)
                 StepperInput(label: "Coral Level 1", value: $teleopData.coral1, range: 0...10)
                 StepperInput(label: "Coral Level 2", value: $teleopData.coral2, range: 0...10)
                 StepperInput(label: "Coral Level 3", value: $teleopData.coral3, range: 0...10)
@@ -15,7 +15,7 @@ struct TeleopView: View {
 
                 StepperInput(label: "Processor Score", value: $teleopData.processorScore, range: 0...10)
                 StepperInput(label: "Net Algae Score", value: $teleopData.netAlgae, range: 0...10)
-                ToggleInput(label: "Knocked Off Algae", isOn: $teleopData.knockedOffAlgae)
+                
             }
         }
         .navigationTitle("Teleop Phase")
