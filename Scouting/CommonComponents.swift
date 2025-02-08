@@ -5,7 +5,7 @@ public struct MatchDetails {
     public var scouterInitials: String = ""
     public var matchNumber: String = ""
     public var teamNumber: String = ""
-    public var selectedAlliancePosition: String = "Default"
+    public var selectedAlliancePosition: String = "Red 1"
 }
 
 // Data structure for Auto phase
