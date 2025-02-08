@@ -47,8 +47,7 @@ struct ContentView: View {
                         }
 
                     // Defence Tab
-                    DefenceView(defenceData: $defenceData,
-                                endgameOptions: endgameOptions)
+                    DefenceView(defenceData: $defenceData)
                         .tabItem {
                             Label("Defence/Endgame", systemImage: "4.circle")
                         }
@@ -114,7 +113,7 @@ struct ContentView: View {
             }
         }
         .alert(isPresented: $showingInfoAlert) {
-            Alert(title: Text("Bot Watch"),  message: Text("This app is proudly brought to you by FRC Team 2386 and our Programming Team. We appreciate you using Bot Watch, and we hope it helped make your scouting experience even better. Thank you for being part of our journey!"), dismissButton: .default(Text("OK")))
+            Alert(title: Text("Bot Watch"),  message: Text("This app is proudly brought to you by FRC Team 2386 and our Programming Team. We appreciate you using Bot Watch, and we hope it helped make your scouting experience even better. Thank you for being a part of our journey!"), dismissButton: .default(Text("OK")))
         }
     }
 

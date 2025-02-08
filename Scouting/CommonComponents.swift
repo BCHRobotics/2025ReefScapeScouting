@@ -30,18 +30,21 @@ public struct TeleopData {
     public var netAlgae: Int = 0
 }
 
-public struct DefenceData {
-    public var endgameStatus: String = "Not Attempted"
+enum ClimbStatus {
+    case none, parked, shallow, deep
+}
+
+struct DefenceData {
+
+    public var climbStatus: ClimbStatus = .none
     public var stoppedOpponents: Bool = false
     public var triedToStopOpponents: Bool = false
-    public var didntStopOpponents: Bool = false
     public var tippy: Bool = false
     public var disabled: Bool = false
     public var comments: String = ""
 }
 
 public let alliancePositions = ["Default", "Red 1", "Red 2", "Red 3", "Blue 1", "Blue 2", "Blue 3"]
-public let endgameOptions = ["Not Attempted", "Parked", "Failed to Climb", "Shallow Cage", "Deep Cage"]
 
 struct StepperInput: View {
     let label: String

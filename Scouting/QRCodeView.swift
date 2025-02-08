@@ -25,10 +25,10 @@ struct QRCodeView: View {
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Prematch Phase:").bold()
                     Group {
-                        Text("Match Number:") + Text(" \(matchDetails.matchNumber.isEmpty ? "null" : matchDetails.matchNumber)")
-                        Text("Team Number:") + Text(" \(matchDetails.teamNumber.isEmpty ? "null" : matchDetails.teamNumber)")
                         Text("Scouter Initials:") + Text(" \(matchDetails.scouterInitials.isEmpty ? "null" : matchDetails.scouterInitials)")
+                        Text("Match Number:") + Text(" \(matchDetails.matchNumber.isEmpty ? "null" : matchDetails.matchNumber)")
                         Text("Alliance Position:") + Text(" \(matchDetails.selectedAlliancePosition.isEmpty ? "null" : matchDetails.selectedAlliancePosition)")
+                        Text("Team Number:") + Text(" \(matchDetails.teamNumber.isEmpty ? "null" : matchDetails.teamNumber)")
                     }
 
                     Text("Auto Phase:").bold()
@@ -37,24 +37,27 @@ struct QRCodeView: View {
                         Text("• Auto Coral Scores:") + Text(" \(autoData.coral1), \(autoData.coral2), \(autoData.coral3), \(autoData.coral4)")
                         Text("• Auto Processor Score:") + Text(" \(autoData.processorScore)")
                         Text("• Net Algae Score:") + Text(" \(autoData.netAlgae)")
+                        
                     }
 
                     Text("Teleop Phase:").bold()
                     Group {
-                        Text("• Knocked Off Algae:") + Text(" \(teleopData.knockedOffAlgae ? "Yes" : "No")")
                         Text("• Teleop Coral Scores:") + Text(" \(teleopData.coral1), \(teleopData.coral2), \(teleopData.coral3), \(teleopData.coral4)")
                         Text("• Teleop Processor Score:") + Text(" \(teleopData.processorScore)")
                         Text("• Teleop Net Algae Score:") + Text(" \(teleopData.netAlgae)")
+                        Text("• Knocked Off Algae:") + Text(" \(teleopData.knockedOffAlgae ? "Yes" : "No")")
                     }
 
-                    Text("Endgame/Defensive Play:").bold()
+                    Text("Climb Status/Defensive Play:").bold()
                     Group {
-                        Text("• Endgame Status:") + Text(" \(defenceData.endgameStatus.isEmpty ? "null" : defenceData.endgameStatus)")
+                        Text("• Parked:") + Text(" \(defenceData.climbStatus == .parked ? "Yes" : "No")")
+                        Text("• Climbed Shallow Cage:") + Text(" \(defenceData.climbStatus == .shallow ? "Yes" : "No")")
+                        Text("• Climbed Deep Cage:") + Text(" \(defenceData.climbStatus == .deep ? "Yes" : "No")")
+                        Text("• Attempted Defence:") + Text(" \(defenceData.triedToStopOpponents ? "Yes" : "No")")
                         Text("• Stopped Opponents:") + Text(" \(defenceData.stoppedOpponents ? "Yes" : "No")")
-                        Text("• Impeded Opponents:") + Text(" \(defenceData.triedToStopOpponents ? "Yes" : "No")")
-                        Text("• Didn't Stop Opponents:") + Text(" \(defenceData.didntStopOpponents ? "Yes" : "No")")
-                        Text("• Was the Robot Unbalanced:") + Text(" \(defenceData.tippy ? "Yes" : "No")")
                         Text("• Was the Robot Disabled:") + Text(" \(defenceData.disabled ? "Yes" : "No")")
+                        Text("• Was the Robot Unbalanced:") + Text(" \(defenceData.tippy ? "Yes" : "No")")
+                        
                     }
 
                     Text("Comments:").bold() + Text(" \(defenceData.comments.isEmpty ? "null" : defenceData.comments)")
@@ -141,10 +144,10 @@ struct QRCodeView: View {
 
     func generateQRCode() {
         let combinedData = """
-           \(matchDetails.matchNumber.isEmpty ? "null" : matchDetails.matchNumber)\t\
-           \(matchDetails.teamNumber.isEmpty ? "null" : matchDetails.teamNumber)\t\
            \(matchDetails.scouterInitials.isEmpty ? "null" : matchDetails.scouterInitials)\t\
+           \(matchDetails.matchNumber.isEmpty ? "null" : matchDetails.matchNumber)\t\
            \(matchDetails.selectedAlliancePosition.isEmpty ? "null" : matchDetails.selectedAlliancePosition)\t\
+           \(matchDetails.teamNumber.isEmpty ? "null" : matchDetails.teamNumber)\t\
            \(autoData.robotLeftStartingLine ? "1" : "0")\t\
            \(autoData.coral1)\t\
            \(autoData.coral2)\t\
@@ -152,19 +155,20 @@ struct QRCodeView: View {
            \(autoData.coral4)\t\
            \(autoData.processorScore)\t\
            \(autoData.netAlgae)\t\
-           \(teleopData.knockedOffAlgae ? "1" : "0")\t\
            \(teleopData.coral1)\t\
            \(teleopData.coral2)\t\
            \(teleopData.coral3)\t\
            \(teleopData.coral4)\t\
            \(teleopData.processorScore)\t\
            \(teleopData.netAlgae)\t\
-           \(defenceData.endgameStatus.isEmpty ? "null" : defenceData.endgameStatus)\t\
-           \(defenceData.stoppedOpponents ? "Yes" : "No")\t\
-           \(defenceData.triedToStopOpponents ? "Yes" : "No")\t\
-           \(defenceData.didntStopOpponents ? "Yes" : "No")\t\
+           \(teleopData.knockedOffAlgae ? "1" : "0")\t\
+           \(defenceData.climbStatus == .parked ? "1" : "0")\t\
+           \(defenceData.climbStatus == .shallow ? "1" : "0")\t\
+           \(defenceData.climbStatus == .deep ? "1" : "0")\t\  
+           \(defenceData.triedToStopOpponents ? "1" : "0")\t\
+           \(defenceData.stoppedOpponents ? "1" : "0")\t\
+           \(defenceData.disabled ? "1" : "0")\t\   
            \(defenceData.tippy ? "1" : "0")\t\
-           \(defenceData.disabled ? "1" : "0")\t\           
            \(defenceData.comments.isEmpty ? "null" : defenceData.comments)
            """
         
