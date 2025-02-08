@@ -48,15 +48,18 @@ struct QRCodeView: View {
                         Text("• Knocked Off Algae:") + Text(" \(teleopData.knockedOffAlgae ? "Yes" : "No")")
                     }
 
-                    Text("Climb Status/Defensive Play:").bold()
+                    Text("Climb Status:").bold()
                     Group {
                         Text("• Parked:") + Text(" \(defenceData.climbStatus == .parked ? "Yes" : "No")")
                         Text("• Climbed Shallow Cage:") + Text(" \(defenceData.climbStatus == .shallow ? "Yes" : "No")")
                         Text("• Climbed Deep Cage:") + Text(" \(defenceData.climbStatus == .deep ? "Yes" : "No")")
+                        Text("Defensive Plays:").bold()
+                    Group {
                         Text("• Attempted Defence:") + Text(" \(defenceData.triedToStopOpponents ? "Yes" : "No")")
                         Text("• Stopped Opponents:") + Text(" \(defenceData.stoppedOpponents ? "Yes" : "No")")
                         Text("• Was the Robot Disabled:") + Text(" \(defenceData.disabled ? "Yes" : "No")")
                         Text("• Was the Robot Unbalanced:") + Text(" \(defenceData.tippy ? "Yes" : "No")")
+                        }
                         
                     }
 

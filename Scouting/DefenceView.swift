@@ -14,7 +14,7 @@ struct DefenceView: View {
                     defenceData.climbStatus = .none
                 }) {
                     HStack {
-                        Text("Didnt Attempt")
+                        Text("Did Not Attempt")
                         Spacer()
                         if defenceData.climbStatus == .none {
                             Image(systemName: "checkmark")
