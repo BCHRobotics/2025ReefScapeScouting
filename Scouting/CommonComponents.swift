@@ -34,11 +34,14 @@ enum ClimbStatus {
     case none, parked, shallow, deep
 }
 
+enum DefenseStatus {
+    case none, stoppedOpponenes, attemptedToStopOpponenets
+}
+
 struct DefenceData {
 
     public var climbStatus: ClimbStatus = .none
-    public var stoppedOpponents: Bool = false
-    public var triedToStopOpponents: Bool = false
+    public var defenseStatus: DefenseStatus = .none
     public var tippy: Bool = false
     public var disabled: Bool = false
     public var comments: String = ""

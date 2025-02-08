@@ -3,6 +3,8 @@ import SwiftUI
 struct SavedQRCodesView: View {
     @State private var savedQRCodes: [URL] = []
     @State private var selectedQRCodes: Set<URL> = []
+    @State private var showDeleteConfirmation = false // Flag to show the confirmation dialog
+    @State private var qrCodeToDelete: URL? = nil // To store the QR code to be deleted
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
@@ -37,19 +39,29 @@ struct SavedQRCodesView: View {
                     .foregroundColor(.red)
                 }
                 ToolbarItem(placement: .principal) {
-                                   Text("My QR Codes")
-                                       .font(.headline)
-                                       .lineLimit(1)
-                               }
+                    Text("My QR Codes")
+                        .font(.headline)
+                        .lineLimit(1)
+                }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Delete") {
-                        deleteSelectedQRCodes()
+                        showDeleteConfirmation = true // Show confirmation dialog
                     }
                     .foregroundColor(.red)
                     .disabled(selectedQRCodes.isEmpty)
                 }
             }
             .onAppear(perform: loadSavedQRCodes)
+            .alert(isPresented: $showDeleteConfirmation) {
+                Alert(
+                    title: Text("Are you sure?"),
+                    message: Text("This action will permanently delete the selected QR codes."),
+                    primaryButton: .destructive(Text("Delete")) {
+                        deleteSelectedQRCodes()
+                    },
+                    secondaryButton: .cancel()
+                )
+            }
         }
     }
 
@@ -123,11 +135,11 @@ struct QRCodeRowView: View {
                         .padding(.bottom, 5)
                 }
                 if let teamNumber = extractTeamNumber(from: qrCodeURL) {
-                                    Text("Team Number: \(teamNumber)")
-                                        .font(.caption)
-                                        .foregroundColor(.gray)
-                                        .padding(.bottom, 5)
-                                }
+                    Text("Team Number: \(teamNumber)")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                        .padding(.bottom, 5)
+                }
             }
         }
         .background(isSelected ? Color.blue.opacity(0.2) : Color(.secondarySystemBackground))
@@ -143,10 +155,10 @@ struct QRCodeRowView: View {
         let components = filename.split(separator: "_")
         return components.count > 1 ? Int(components[1]) : nil
     }
+    
     func extractTeamNumber(from url: URL) -> Int? {
         let filename = url.deletingPathExtension().lastPathComponent
         let components = filename.split(separator: "_")
         return components.count > 2 ? Int(components[2]) : nil
     }
-
 }

@@ -55,10 +55,10 @@ struct QRCodeView: View {
                         Text("• Climbed Deep Cage:") + Text(" \(defenceData.climbStatus == .deep ? "Yes" : "No")")
                         Text("Defensive Plays:").bold()
                     Group {
-                        Text("• Attempted Defence:") + Text(" \(defenceData.triedToStopOpponents ? "Yes" : "No")")
-                        Text("• Stopped Opponents:") + Text(" \(defenceData.stoppedOpponents ? "Yes" : "No")")
-                        Text("• Was the Robot Disabled:") + Text(" \(defenceData.disabled ? "Yes" : "No")")
-                        Text("• Was the Robot Unbalanced:") + Text(" \(defenceData.tippy ? "Yes" : "No")")
+                        Text("• Attempted Defence:") + Text(" \(defenceData.defenseStatus == .attemptedToStopOpponenets ? "Yes" : "No")")
+                        Text("• Stopped Opponents:") + Text(" \(defenceData.defenseStatus == .stoppedOpponenes ? "Yes" : "No")")
+                        Text("• Was the Robot Disabled?:") + Text(" \(defenceData.disabled ? "Yes" : "No")")
+                        Text("• Did The Robot Tip Over?:") + Text(" \(defenceData.tippy ? "Yes" : "No")")
                         }
                         
                     }
@@ -168,8 +168,8 @@ struct QRCodeView: View {
            \(defenceData.climbStatus == .parked ? "1" : "0")\t\
            \(defenceData.climbStatus == .shallow ? "1" : "0")\t\
            \(defenceData.climbStatus == .deep ? "1" : "0")\t\  
-           \(defenceData.triedToStopOpponents ? "1" : "0")\t\
-           \(defenceData.stoppedOpponents ? "1" : "0")\t\
+           \(defenceData.defenseStatus == .attemptedToStopOpponenets ? "1" : "0")\t\
+           \(defenceData.defenseStatus == .stoppedOpponenes ? "1" : "0")\t\
            \(defenceData.disabled ? "1" : "0")\t\   
            \(defenceData.tippy ? "1" : "0")\t\
            \(defenceData.comments.isEmpty ? "null" : defenceData.comments)
