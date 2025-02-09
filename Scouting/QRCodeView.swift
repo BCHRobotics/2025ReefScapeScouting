@@ -25,10 +25,10 @@ struct QRCodeView: View {
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Prematch Phase:").bold()
                     Group {
-                        Text("Scouter Initials:") + Text(" \(matchDetails.scouterInitials.isEmpty ? "null" : matchDetails.scouterInitials)")
-                        Text("Match Number:") + Text(" \(matchDetails.matchNumber.isEmpty ? "null" : matchDetails.matchNumber)")
-                        Text("Alliance Position:") + Text(" \(matchDetails.selectedAlliancePosition.isEmpty ? "null" : matchDetails.selectedAlliancePosition)")
-                        Text("Team Number:") + Text(" \(matchDetails.teamNumber.isEmpty ? "null" : matchDetails.teamNumber)")
+                        Text("• Scouter Initials:") + Text(" \(matchDetails.scouterInitials.isEmpty ? "null" : matchDetails.scouterInitials)")
+                        Text("• Match Number:") + Text(" \(matchDetails.matchNumber.isEmpty ? "null" : matchDetails.matchNumber)")
+                        Text("• Alliance Position:") + Text(" \(matchDetails.selectedAlliancePosition.isEmpty ? "null" : matchDetails.selectedAlliancePosition)")
+                        Text("• Team Number:") + Text(" \(matchDetails.teamNumber.isEmpty ? "null" : matchDetails.teamNumber)")
                     }
 
                     Text("Auto Phase:").bold()
@@ -58,14 +58,16 @@ struct QRCodeView: View {
                         Text("• Attempted Defence:") + Text(" \(defenceData.defenseStatus == .attemptedToStopOpponenets ? "Yes" : "No")")
                         Text("• Stopped Opponents:") + Text(" \(defenceData.defenseStatus == .stoppedOpponenes ? "Yes" : "No")")
                         Text("• Was The Robot Disabled?:") + Text(" \(defenceData.disabled ? "Yes" : "No")")
-                        Text("• Did The Robot Tip Over?:") + Text(" \(defenceData.tippy ? "Yes" : "No")")
+                        Text("• Did The Robot Almost Tip Over?:") + Text(" \(defenceData.tippy ? "Yes" : "No")")
                         }
                         
                     }
 
                     Text("Comments:").bold() + Text(" \(defenceData.comments.isEmpty ? "null" : defenceData.comments)")
+                    
                 }
                 .padding()
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .background(Color(.secondarySystemBackground))
                 .cornerRadius(10)
             }
