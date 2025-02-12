@@ -69,7 +69,7 @@ struct ContentView: View {
                     
                     // Custom Navigation Title
                     ToolbarItem(placement: .principal) {
-                        Text("Bot Watch")
+                        Text("BotWatch")
                             .font(.system(size: 18))  // Make title smaller
                             .bold()
                     }

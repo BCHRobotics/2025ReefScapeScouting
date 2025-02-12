@@ -24,9 +24,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3EC9DA8E2D3C427400653213 /* Bot Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bot Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3EC9DA9F2D3C427600653213 /* Bot WatchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bot WatchTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3EC9DAA92D3C427600653213 /* Bot WatchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bot WatchUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3EC9DA8E2D3C427400653213 /* BotWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BotWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3EC9DA9F2D3C427600653213 /* BotWatchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BotWatchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3EC9DAA92D3C427600653213 /* BotWatchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BotWatchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -91,9 +91,9 @@
 		3EC9DA8F2D3C427400653213 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3EC9DA8E2D3C427400653213 /* Bot Watch.app */,
-				3EC9DA9F2D3C427600653213 /* Bot WatchTests.xctest */,
-				3EC9DAA92D3C427600653213 /* Bot WatchUITests.xctest */,
+				3EC9DA8E2D3C427400653213 /* BotWatch.app */,
+				3EC9DA9F2D3C427600653213 /* BotWatchTests.xctest */,
+				3EC9DAA92D3C427600653213 /* BotWatchUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -101,9 +101,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3EC9DA8D2D3C427400653213 /* Bot Watch */ = {
+		3EC9DA8D2D3C427400653213 /* BotWatch */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3EC9DAB32D3C427600653213 /* Build configuration list for PBXNativeTarget "Bot Watch" */;
+			buildConfigurationList = 3EC9DAB32D3C427600653213 /* Build configuration list for PBXNativeTarget "BotWatch" */;
 			buildPhases = (
 				3EC9DA8A2D3C427400653213 /* Sources */,
 				3EC9DA8B2D3C427400653213 /* Frameworks */,
@@ -117,16 +117,16 @@
 				3EC9DA902D3C427400653213 /* Scouting */,
 				3EC9DB512D50212100653213 /* ScreenShots */,
 			);
-			name = "Bot Watch";
+			name = BotWatch;
 			packageProductDependencies = (
 			);
 			productName = Scouting;
-			productReference = 3EC9DA8E2D3C427400653213 /* Bot Watch.app */;
+			productReference = 3EC9DA8E2D3C427400653213 /* BotWatch.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3EC9DA9E2D3C427600653213 /* Bot WatchTests */ = {
+		3EC9DA9E2D3C427600653213 /* BotWatchTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3EC9DAB62D3C427600653213 /* Build configuration list for PBXNativeTarget "Bot WatchTests" */;
+			buildConfigurationList = 3EC9DAB62D3C427600653213 /* Build configuration list for PBXNativeTarget "BotWatchTests" */;
 			buildPhases = (
 				3EC9DA9B2D3C427600653213 /* Sources */,
 				3EC9DA9C2D3C427600653213 /* Frameworks */,
@@ -140,16 +140,16 @@
 			fileSystemSynchronizedGroups = (
 				3EC9DAA22D3C427600653213 /* ScoutingTests */,
 			);
-			name = "Bot WatchTests";
+			name = BotWatchTests;
 			packageProductDependencies = (
 			);
 			productName = ScoutingTests;
-			productReference = 3EC9DA9F2D3C427600653213 /* Bot WatchTests.xctest */;
+			productReference = 3EC9DA9F2D3C427600653213 /* BotWatchTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		3EC9DAA82D3C427600653213 /* Bot WatchUITests */ = {
+		3EC9DAA82D3C427600653213 /* BotWatchUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3EC9DAB92D3C427600653213 /* Build configuration list for PBXNativeTarget "Bot WatchUITests" */;
+			buildConfigurationList = 3EC9DAB92D3C427600653213 /* Build configuration list for PBXNativeTarget "BotWatchUITests" */;
 			buildPhases = (
 				3EC9DAA52D3C427600653213 /* Sources */,
 				3EC9DAA62D3C427600653213 /* Frameworks */,
@@ -163,11 +163,11 @@
 			fileSystemSynchronizedGroups = (
 				3EC9DAAC2D3C427600653213 /* ScoutingUITests */,
 			);
-			name = "Bot WatchUITests";
+			name = BotWatchUITests;
 			packageProductDependencies = (
 			);
 			productName = ScoutingUITests;
-			productReference = 3EC9DAA92D3C427600653213 /* Bot WatchUITests.xctest */;
+			productReference = 3EC9DAA92D3C427600653213 /* BotWatchUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -193,7 +193,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3EC9DA892D3C427400653213 /* Build configuration list for PBXProject "Bot Watch" */;
+			buildConfigurationList = 3EC9DA892D3C427400653213 /* Build configuration list for PBXProject "BotWatch" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -207,9 +207,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3EC9DA8D2D3C427400653213 /* Bot Watch */,
-				3EC9DA9E2D3C427600653213 /* Bot WatchTests */,
-				3EC9DAA82D3C427600653213 /* Bot WatchUITests */,
+				3EC9DA8D2D3C427400653213 /* BotWatch */,
+				3EC9DA9E2D3C427600653213 /* BotWatchTests */,
+				3EC9DAA82D3C427600653213 /* BotWatchUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -265,12 +265,12 @@
 /* Begin PBXTargetDependency section */
 		3EC9DAA12D3C427600653213 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3EC9DA8D2D3C427400653213 /* Bot Watch */;
+			target = 3EC9DA8D2D3C427400653213 /* BotWatch */;
 			targetProxy = 3EC9DAA02D3C427600653213 /* PBXContainerItemProxy */;
 		};
 		3EC9DAAB2D3C427600653213 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3EC9DA8D2D3C427400653213 /* Bot Watch */;
+			target = 3EC9DA8D2D3C427400653213 /* BotWatch */;
 			targetProxy = 3EC9DAAA2D3C427600653213 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -486,7 +486,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bot Watch.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Bot Watch";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BotWatch.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BotWatch";
 				XROS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Debug;
@@ -509,7 +509,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bot Watch.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Bot Watch";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BotWatch.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BotWatch";
 				XROS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Release;
@@ -561,7 +561,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3EC9DA892D3C427400653213 /* Build configuration list for PBXProject "Bot Watch" */ = {
+		3EC9DA892D3C427400653213 /* Build configuration list for PBXProject "BotWatch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3EC9DAB12D3C427600653213 /* Debug */,
@@ -570,7 +570,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3EC9DAB32D3C427600653213 /* Build configuration list for PBXNativeTarget "Bot Watch" */ = {
+		3EC9DAB32D3C427600653213 /* Build configuration list for PBXNativeTarget "BotWatch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3EC9DAB42D3C427600653213 /* Debug */,
@@ -579,7 +579,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3EC9DAB62D3C427600653213 /* Build configuration list for PBXNativeTarget "Bot WatchTests" */ = {
+		3EC9DAB62D3C427600653213 /* Build configuration list for PBXNativeTarget "BotWatchTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3EC9DAB72D3C427600653213 /* Debug */,
@@ -588,7 +588,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3EC9DAB92D3C427600653213 /* Build configuration list for PBXNativeTarget "Bot WatchUITests" */ = {
+		3EC9DAB92D3C427600653213 /* Build configuration list for PBXNativeTarget "BotWatchUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3EC9DABA2D3C427600653213 /* Debug */,
