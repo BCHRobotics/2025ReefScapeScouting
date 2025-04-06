@@ -1,6 +1,6 @@
 # Bot Watcher
 
-Bot Watcher is a powerful and user-friendly iOS application designed to help teams participating in the FIRST Robotics Competition (FRC) efficiently scout and track match data. With features to record prematch details, autonomous and teleop performance, defensive plays, and endgame outcomes, the app also generates QR codes for easy data sharing.
+Bot Watcher is a powerful and user-friendly iOS application designed to help teams participating in the FIRST Robotics Competition (FRC) efficiently scout and track match data. With features to record prematch details, autonomous and teleop performance, defensive plays, and endgame outcomes, the app also generates QR codes for easy data sharing. https://apps.apple.com/ca/app/botwatch/id6741486514
 
 ## Features
 
